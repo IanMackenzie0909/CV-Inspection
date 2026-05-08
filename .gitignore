@@ -1,0 +1,12 @@
+# vscode configuration files
+.vscode/
+
+# Python cache files
+__pycache__/
+
+# Python virtual environment
+env/
+
+*.md
+!README.md
+.codex
