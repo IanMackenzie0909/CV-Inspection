@@ -1,0 +1,11 @@
+cameras:
+  - camera_id: CAM-A01
+    view_id: top
+    lighting_profile: ST-A01_DAY
+    rois:
+      full_image:
+        bbox_xyxy_norm: [0.0, 0.0, 1.0, 1.0]
+      bearing_seat:
+        bbox_xyxy_norm: [0.0, 0.0, 1.0, 1.0]
+      flexspline_area:
+        bbox_xyxy_norm: [0.0, 0.0, 1.0, 1.0]

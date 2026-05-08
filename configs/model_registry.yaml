@@ -1,0 +1,15 @@
+models:
+  groundingdino:
+    name: GroundingDINO
+    version: GroundingDINO_SwinT_OGC
+    role: open_set_candidate_detector
+    checkpoint_id: groundingdino_swint_ogc.pth
+  mobilesam:
+    name: MobileSAM
+    version: mobile_sam_vit_t
+    role: promptable_segmenter
+    checkpoint_id: mobile_sam.pt
+  vision_service:
+    name: V-RAWA vision_service
+    version: v0.3.0-mvp
+    role: evidence_normalizer_and_step_checker

@@ -1,0 +1,23 @@
+bearing:
+  zh-Hant: "軸承"
+  nan-tw-tl-numeric: "tsiok8-sing5"
+  aliases_en:
+    - bearing
+    - ball bearing
+  criticality: high
+
+flexspline:
+  zh-Hant: "柔輪"
+  nan-tw-tl-numeric: "jiu5-lun5"
+  aliases_en:
+    - flexspline
+    - flex spline
+    - flexible spline
+  criticality: high
+
+washer:
+  zh-Hant: "華司"
+  nan-tw-tl-numeric: "hua5-si1"
+  aliases_en:
+    - washer
+  criticality: high

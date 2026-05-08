@@ -1,0 +1,37 @@
+rule_version: "v1"
+
+confidence_thresholds:
+  vision_high: 0.90
+  vision_low: 0.70
+  vision_detection_min: 0.30
+  segmentation_low: 0.70
+
+risk_levels:
+  missing_critical_part: high
+  possible_missing_part_low_confidence: medium
+  wrong_part: medium
+  major_defect: high
+
+actions:
+  missing_critical_part:
+    high_confidence: BLOCK_AND_REWORK
+    low_confidence: REQUEST_OPERATOR_CONFIRMATION
+  wrong_part:
+    high_confidence: REQUEST_OPERATOR_CONFIRMATION
+    low_confidence: REQUEST_OPERATOR_CONFIRMATION
+  major_defect:
+    high_confidence: CREATE_QMS_DRAFT_AND_REQUIRE_QA_CONFIRMATION
+
+override_policy:
+  low:
+    operator_can_accept: true
+    require_second_capture: false
+    require_supervisor: false
+  medium:
+    operator_can_accept: true
+    require_second_capture: true
+    require_supervisor: false
+  high:
+    operator_can_accept: false
+    require_second_capture: true
+    require_supervisor: true

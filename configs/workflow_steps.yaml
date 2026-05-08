@@ -1,0 +1,32 @@
+workflow_version: "v1"
+
+default_step:
+  required_parts_from_text_prompt: true
+  default_roi: full_image
+
+steps:
+  S01:
+    description: Bearing presence check
+    expected_parts:
+      - part: bearing
+        required: true
+        roi: bearing_seat
+        min_confidence: 0.30
+  S02:
+    description: Flexspline presence check
+    expected_parts:
+      - part: flexspline
+        required: true
+        roi: flexspline_area
+        min_confidence: 0.30
+  S03:
+    description: Harmonic drive visible parts check
+    expected_parts:
+      - part: bearing
+        required: true
+        roi: bearing_seat
+        min_confidence: 0.30
+      - part: flexspline
+        required: true
+        roi: flexspline_area
+        min_confidence: 0.30
