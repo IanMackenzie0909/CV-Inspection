@@ -7,6 +7,12 @@ __pycache__/
 # Python virtual environment
 env/
 
+# Ignore all markdown files except...
 *.md
 !README.md
+!run_project.md
+
+# Output files
+Global-output/
+
 .codex

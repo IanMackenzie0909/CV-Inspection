@@ -31,7 +31,7 @@ Low-confidence or suspicious evidence is treated conservatively. The pipeline re
 ├── services/vision_service/             # V-RAWA vision-layer service code
 ├── configs/                             # SOP, camera, model, and safety rules
 ├── tests/                               # Unit tests for vision service logic
-├── harmonic_drive/                      # Sample harmonic-drive images and references
+├── image/                      # Sample harmonic-drive images and references
 ├── Global-output/                       # Example/generated pipeline outputs
 ├── GroundingDINO/                       # Vendored GroundingDINO code and checkpoint
 ├── MobileSAM-fast-finetuning/           # Vendored MobileSAM code and checkpoint
@@ -70,7 +70,7 @@ Example bearing inspection:
 
 ```bash
 python3 run_grounded_mobilesam_pipeline.py \
-  --image harmonic_drive/bearing.jpg \
+  --image image/bearing.jpg \
   --text-prompt "bearing" \
   --output-dir Global-output \
   --work-order-id WO-20260427-001 \
@@ -84,7 +84,7 @@ Run with explicit Python environments:
 
 ```bash
 python3 run_grounded_mobilesam_pipeline.py \
-  --image harmonic_drive/bearing.jpg \
+  --image image/bearing.jpg \
   --text-prompt "bearing" \
   --output-dir Global-output \
   --dino-python GroundingDINO/env/bin/python \
@@ -95,7 +95,7 @@ Force CPU execution:
 
 ```bash
 python3 run_grounded_mobilesam_pipeline.py \
-  --image harmonic_drive/bearing.jpg \
+  --image image/bearing.jpg \
   --text-prompt "bearing" \
   --output-dir Global-output \
   --dino-device cpu \
@@ -155,6 +155,10 @@ normalized detections, defect-like observations, `step_status`, confidence, and 
 idempotency keys, model/rule metadata, media references, and whether operator confirmation is
 required.
 
+The overall result in pictures is presented below:
+![result](results.png)
+Original img → GroundingDINO result → Bbox img → Binarization → MobileSAM result → Captured result → Object's mask
+
 ## Configuration
 
 Operational rules live in YAML so SOPs and thresholds can change without editing Python code.
@@ -182,6 +186,7 @@ Current tests focus on the safety-critical step-checker behavior:
 
 ## Development Notes
 
+-  Train your own weights for each model, the weights in this repo are pretrain model from the original models.
 - `run_grounded_mobilesam_pipeline.py` is intentionally thin. Most reusable logic lives under
   `services/vision_service/`.
 - `services/vision_service/detector.py` owns subprocess command construction for GroundingDINO and
