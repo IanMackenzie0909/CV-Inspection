@@ -1,0 +1,12 @@
+
+# 1. 準備數據集
+python prepare_tongue_dataset.py
+
+# 2. 訓練（修改 epochs 後執行）
+CUDA_VISIBLE_DEVICES=0 python train.py --config ./configs/tongue_train.json 2>&1 | tee logs/tongue/full_training.log
+
+# 3. 繪製訓練曲線
+python plot_training.py --history ./logs/tongue/training_history.json --output ./logs/tongue/
+
+# 4. CPU Demo 推理
+CUDA_VISIBLE_DEVICES="" python demo_cpu.py --checkpoint ./logs/tongue/best.pth --test_dir ./datasets/tongue/test --output_dir ./demo_results

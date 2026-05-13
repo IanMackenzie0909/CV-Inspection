@@ -186,7 +186,7 @@ Current tests focus on the safety-critical step-checker behavior:
 
 ## Development Notes
 
--  Train your own weights for each model, the weights in this repo are pretrain model from the original models.
+-  Train your own weights for each model, the weights in this repo are pretrain model from the original repo.
 - `run_grounded_mobilesam_pipeline.py` is intentionally thin. Most reusable logic lives under
   `services/vision_service/`.
 - `services/vision_service/detector.py` owns subprocess command construction for GroundingDINO and

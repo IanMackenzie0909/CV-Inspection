@@ -1,0 +1,34 @@
+{
+    "dataset":{
+        "train_dataset":"./datasets/train" ,
+        "val_dataset":"./datasets/val" ,
+        "max_bbox_shift": 20,
+        "num_workers": 4
+    },
+    "model":{
+        "checkpoint_path":"./weights/mobile_sam.pt",
+        "type":"vit_t",
+        "image_size": 1024,
+        "save_path":"./logs/tongue"
+    },
+    "train": {
+        "epochs": 100,
+        "learning_rate": 1e-6,
+        "batch_size": 8,
+        "val_freq": 2,
+        "gradient_accumulation": 1,
+        "bf16": true,
+        "warmup_step": 50,
+        "resume": false
+    },
+    "visual":{
+        "status": true,
+        "save_path": "./images/tongue",
+        "IOU_threshold": 0.5
+    },
+    "freeze":{
+        "freeze_image_encoder": true,
+        "freeze_prompt_encoder": true,
+        "freeze_mask_decoder": false
+    }
+}
